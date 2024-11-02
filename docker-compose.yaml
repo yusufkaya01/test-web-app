@@ -20,7 +20,16 @@ services:
     ports:
       - "20106:3306"
     volumes:
-      - db_data:/var/lib/mysql  # Bind the volume to MySQL's data directory
+      - db_data:/var/lib/mysql
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
 
 volumes:
   db_data:
