@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 
 // MySQL connection
 const db = mysql.createConnection({
-    host: 'db', // use the service name from your docker-compose file
+    host: 'db', // Use the service name from your Docker Compose file
     user: 'admin',
     password: 'admin',
     database: 'userdb'
@@ -32,7 +32,7 @@ app.post('/register', (req, res) => {
         if (err) {
             return res.status(500).json({ error: err.message });
         }
-        res.status(201).json({ message: 'User registered successfully!' });
+        res.status(201).json({ success: true, message: 'User registered successfully!' });
     });
 });
 
@@ -45,9 +45,9 @@ app.post('/login', (req, res) => {
             return res.status(500).json({ error: err.message });
         }
         if (results.length > 0) {
-            res.status(200).json({ message: 'Login successful!' });
+            res.status(200).json({ success: true, message: 'Login successful!' });
         } else {
-            res.status(401).json({ message: 'Invalid credentials' });
+            res.status(401).json({ success: false, message: 'Invalid credentials' });
         }
     });
 });
