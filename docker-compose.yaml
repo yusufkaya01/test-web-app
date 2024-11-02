@@ -14,13 +14,13 @@ services:
     image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: testdb
+      MYSQL_DATABASE: userdb
       MYSQL_USER: admin
       MYSQL_PASSWORD: admin
     ports:
-      - "3306:3306"
+      - "20106:3306"
     volumes:
-      - db_data:/var/lib/mysql
+      - db_data:/var/lib/mysql  # Bind the volume to MariaDB's data directory
 
 volumes:
   db_data:

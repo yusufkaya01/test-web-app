@@ -4,6 +4,9 @@ FROM nginx:alpine
 # Install git to clone the repository
 RUN apk add --no-cache git
 
+# Clear the /usr/share/nginx/html directory before cloning
+RUN rm -rf /usr/share/nginx/html/*
+
 # Clone the repository into /usr/share/nginx/html
 RUN git clone https://github.com/yusufkaya01/test-web-app.git /usr/share/nginx/html
 
